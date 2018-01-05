@@ -39,11 +39,13 @@ class Hero(Character):
             self.health = max_health
 
     def level_check(enemy):
-        self.xp += enemy.health
+        self.xp += enemy.damage
         if self.xp is self.xp_to_next_level:
             self.level += 1
             print("You have leveled up to Level {}!!".format(self.level))
             self.xp_to_next_level = self.xp_increments[self.level]
+            self.damage += self.xp_increments[self.level]/10
+            self.max_health += self.xp_increments[self.level]/10
         else:
             print("You have {} XP remaining to Level {}".format(self.xp_level[self.level+1]-self.xp, self.level+1))
 
